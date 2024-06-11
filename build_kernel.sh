@@ -1,9 +1,14 @@
+curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.5
+
 export PATH="/home/ubuntu/arm-linux-androideabi-4.9/bin:/home/ubuntu/aarch64-linux-android-4.9/bin:$PATH"
+
 make mrproper
 make ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu- lmi_defconfig
 make ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu- -j8
 
 find out/arch/arm64/boot/dts -name '*.dtb' -exec cat {} + >out/arch/arm64/boot/dtb
+
+git clone https://github.com/TheVoyager0777/AnyKernel3.git -b kona --depth=1 anykernel
 
 rm -rf anykernel/kernels/miui
 rm -rf anykernel/kernels/aosp
