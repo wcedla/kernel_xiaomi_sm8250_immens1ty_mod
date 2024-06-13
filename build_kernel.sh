@@ -7,30 +7,30 @@ make mrproper
 make ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu- lmi_defconfig
 
 scripts/config --file out/.config \
-		--set-str STATIC_USERMODEHELPER_PATH /system/bin/micd \
-		-e	ARM_ARCH_TIMER_VCT_ACCESS \
-		-e	F2FS_UNFAIR_RWSEM	\
-		-e	PERF_CRITICAL_RT_TASK	\
-		-e	SF_BINDER		\
-		-e	OVERLAY_FS		\
-		-e	LRU_GEN			\
-		-e	LRU_GEN_ENABLED		\
-		-d	UNICODE				\
-		-d	MI_MEMORY_SYSFS \
-        -d	DEBUG_FS \
-        -e MIGT \
-        -e MIGT_ENERGY_MODEL \
-        -e MIHW \
-        -e PACKAGE_RUNTIME_INFO \
-        -e BINDER_OPT \
-        -e KPERFEVENTS \
-        -e MILLET \
-        -e PERF_HUMANTASK \
-        -d OSSFOD \
-        -d LTO_CLANG \
-        -d LOCALVERSION_AUTO \
-        -d TOUCHSCREEN_COMMON \
-        -e SF_BINDER \
+    --set-str STATIC_USERMODEHELPER_PATH /system/bin/micd \
+    -e ARM_ARCH_TIMER_VCT_ACCESS \
+    -e F2FS_UNFAIR_RWSEM	\
+    -e PERF_CRITICAL_RT_TASK	\
+    -e SF_BINDER		\
+    -e OVERLAY_FS		\
+    -e LRU_GEN			\
+    -e LRU_GEN_ENABLED		\
+    -d UNICODE				\
+    -d MI_MEMORY_SYSFS \
+    -d DEBUG_FS \
+    -e MIGT \
+    -e MIGT_ENERGY_MODEL \
+    -e MIHW \
+    -e PACKAGE_RUNTIME_INFO \
+    -e BINDER_OPT \
+    -e KPERFEVENTS \
+    -e MILLET \
+    -e PERF_HUMANTASK \
+    -d OSSFOD \
+    -d LTO_CLANG \
+    -d LOCALVERSION_AUTO \
+    -d TOUCHSCREEN_COMMON \
+    -e SF_BINDER \
 
 
 
