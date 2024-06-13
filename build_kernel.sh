@@ -1,9 +1,63 @@
 curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.5
 
+export PATH="/home/ubuntu/arm-linux-androideabi-4.9/bin:/home/ubuntu/aarch64-linux-android-4.9/bin:/home/ubuntu/linux-x86/clang-r416183b1/bin:$PATH"
 export PATH="/home/ubuntu/arm-linux-androideabi-4.9/bin:/home/ubuntu/aarch64-linux-android-4.9/bin:$PATH"
 
 make mrproper
 make ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu- lmi_defconfig
+
+scripts/config --file out/.config \
+		--set-str STATIC_USERMODEHELPER_PATH /system/bin/micd \
+		-e	ARM_ARCH_TIMER_VCT_ACCESS \
+		-e	F2FS_UNFAIR_RWSEM	\
+		-e	PERF_CRITICAL_RT_TASK	\
+		-e	SF_BINDER		\
+		-e	OVERLAY_FS		\
+		-e	LRU_GEN			\
+		-e	LRU_GEN_ENABLED		\
+		-d	UNICODE				\
+		-d	MI_MEMORY_SYSFS \
+        -d	DEBUG_FS \
+        -e MIGT \
+        -e MIGT_ENERGY_MODEL \
+        -e MIHW \
+        -e PACKAGE_RUNTIME_INFO \
+        -e BINDER_OPT \
+        -e KPERFEVENTS \
+        -e MILLET \
+        -e PERF_HUMANTASK \
+        -d OSSFOD \
+        -d LTO_CLANG \
+        -d LOCALVERSION_AUTO \
+        -d TOUCHSCREEN_COMMON \
+        -e SF_BINDER \
+
+
+
+scripts/config --file out/.config \
+    -d LOCALVERSION_AUTO \
+    -d TOUCHSCREEN_COMMON \
+    --set-str STATIC_USERMODEHELPER_PATH /system/bin/micd \
+    -e BOOT_INFO \
+    -e BINDER_OPT \
+    -e IPC_LOGGING \
+    -e KPERFEVENTS \
+    -e MIGT \
+    -e MIGT_ENERGY_MODEL \
+    -e MIHW \
+    -e MILLET \
+    -e MI_DRM_OPT \
+    -e MIUI_ZRAM_MEMORY_TRACKING \
+    -e MI_RECLAIM \
+    -d OSSFOD \
+    -e PACKAGE_RUNTIME_INFO \
+    -e PERF_HUMANTASK \
+    -e PERF_CRITICAL_RT_TASK \
+    -e SF_BINDER \
+    -e TASK_DELAY_ACCT
+
+
+
 make ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu- -j8
 
 find out/arch/arm64/boot/dts -name '*.dtb' -exec cat {} + >out/arch/arm64/boot/dtb
