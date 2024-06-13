@@ -32,7 +32,7 @@ scripts/config --file out/.config \
     -d TOUCHSCREEN_COMMON \
     -e SF_BINDER \
 
-
+# original:
 
 scripts/config --file out/.config \
     -d LOCALVERSION_AUTO \
@@ -54,9 +54,8 @@ scripts/config --file out/.config \
     -e PERF_HUMANTASK \
     -e PERF_CRITICAL_RT_TASK \
     -e SF_BINDER \
-    -e TASK_DELAY_ACCT
-
-
+    -e TASK_DELAY_ACCT \
+    -e MI_MEMORY_SYSFS \
 
 make ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu- -j8
 
