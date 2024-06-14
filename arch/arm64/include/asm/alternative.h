@@ -3,6 +3,7 @@
 #define __ASM_ALTERNATIVE_H
 
 #include <asm/alternative-macros.h>
+#include <asm/insn.h>
 
 #ifndef __ASSEMBLY__
 
