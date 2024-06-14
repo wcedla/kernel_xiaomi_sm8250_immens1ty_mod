@@ -13,10 +13,7 @@ scripts/config --file out/.config \
     -e PERF_CRITICAL_RT_TASK	\
     -e SF_BINDER		\
     -e OVERLAY_FS		\
-    -e LRU_GEN			\
-    -e LRU_GEN_ENABLED		\
     -d UNICODE				\
-    -d MI_MEMORY_SYSFS \
     -d DEBUG_FS \
     -e MIGT \
     -e MIGT_ENERGY_MODEL \
@@ -31,6 +28,12 @@ scripts/config --file out/.config \
     -d LOCALVERSION_AUTO \
     -d TOUCHSCREEN_COMMON \
     -e SF_BINDER \
+    -d MI_MEMORY_SYSFS \
+    -e TASK_DELAY_ACCT \
+
+    # -e LRU_GEN			\
+    # -e LRU_GEN_ENABLED		\
+    -d DEBUG_FS \
 
 # original:
 
