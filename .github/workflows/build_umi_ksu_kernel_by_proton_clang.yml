@@ -72,11 +72,11 @@ jobs:
           done
           for i in {1..2}; do
             file_var="file$i"
-            if [ -z "${!{env.file_var}}" ]; then
+            if [ -z "${{!env.file_var}}" ]; then
               echo "${{env.file_var}} does not exist."
               exit 1
           else
-              echo "${{env.file_var}} exists: ${!{env.file_var}}"
+              echo "${{env.file_var}} exists: ${{!env.file_var}}"
               echo "CHECK_FILE_IS_OK=true" >> $GITHUB_ENV
           fi
           done
