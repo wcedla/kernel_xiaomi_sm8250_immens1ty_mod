@@ -191,3 +191,4 @@ jobs:
         with:
           name: ${{ env.DEVICE }}-${{ env.BUILD_TIME }}
           path: kernel_workspace/android-kernel/${{ env.ZIP_FILENAME }}
+          compression-level: 0
