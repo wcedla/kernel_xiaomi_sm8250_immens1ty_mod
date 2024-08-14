@@ -177,6 +177,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           git clone https://github.com/liyafe1997/AnyKernel3 -b kona --single-branch --depth=1 anykernel
+          mkdir -p anykernel/kernels/
           cp out/arch/arm64/boot/Image anykernel/kernels/
           cd anykernel
           ZIP_FILENAME=Kernel_MIUI_${env.DEVICE}_KernelSU_$(date +'%Y%m%d_%H%M%S')_anykernel3.zip
