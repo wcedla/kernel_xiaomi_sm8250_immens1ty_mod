@@ -66,7 +66,8 @@ jobs:
           count=1
           for file in *.zip; do
             if [ -f "$file" ]; then
-              echo "file$count=$file" >> $GITHUB_ENV
+              filename= $file
+              echo "file$count=${filename%.zip}" >> $GITHUB_ENV
               count=$((count + 1))
             fi
           done
@@ -86,11 +87,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.file1 }}
-          path: kernel_workspace/android-kernel/${{ env.file1 }}
+          path: kernel_workspace/android-kernel/${{ env.file1 }}.zip
 
       - name: Upload Artifact2
         if: env.CHECK_FILE_IS_OK == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.file2 }}
-          path: kernel_workspace/android-kernel/${{ env.file2 }}
+          path: kernel_workspace/android-kernel/${{ env.file2 }}.zip
