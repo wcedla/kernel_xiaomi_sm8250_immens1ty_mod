@@ -180,11 +180,11 @@ jobs:
           mkdir -p anykernel/kernels/
           cp out/arch/arm64/boot/Image anykernel/kernels/
           cd anykernel
-          rm -rf .git .gitignore out/ ./*.zip
+          rm -rf .git .github .gitignore out/ ./*.zip
 
       - name: Upload Artifact
         if: env.CHECK_FILE_IS_OK == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.ZIP_FILENAME }}-${{ env.BUILD_TIME }}
+          name: ${{ env.DEVICE }}-${{ env.BUILD_TIME }}
           path: kernel_workspace/android-kernel/anykernel
