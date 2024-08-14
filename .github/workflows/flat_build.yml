@@ -180,15 +180,12 @@ jobs:
           mkdir -p anykernel/kernels/
           cp out/arch/arm64/boot/Image anykernel/kernels/
           cd anykernel
-          ZIP_FILENAME=Kernel_MIUI_${{env.DEVICE}}_KernelSU_$(date +'%Y%m%d_%H%M%S')_anykernel3.zip
-          echo "ZIP_FILENAME=${ZIP_FILENAME}" >> $GITHUB_ENV
-          zip -r9 $ZIP_FILENAME ./* -x .git .gitignore out/ ./*.zip
-          mv $ZIP_FILENAME ../
+          rm -rf .git .gitignore out/ ./*.zip
 
       - name: Upload Artifact
         if: env.CHECK_FILE_IS_OK == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.DEVICE }}-${{ env.BUILD_TIME }}
-          path: kernel_workspace/android-kernel/${{ env.ZIP_FILENAME }}
+          name: ${{ env.ZIP_FILENAME }}-${{ env.BUILD_TIME }}
+          path: kernel_workspace/android-kernel/anykernel
           compression-level: 0
