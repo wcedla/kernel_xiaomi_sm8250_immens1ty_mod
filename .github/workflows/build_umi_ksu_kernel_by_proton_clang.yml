@@ -62,6 +62,10 @@ jobs:
           for file in *.zip; do
             if [ -f "$file" ]; then
               echo "file$count=$file" >> $GITHUB_ENV
+              mkdir file$count
+              cd file$count
+              unzip ../$file
+              cd ..
               count=$((count + 1))
             fi
           done
@@ -73,10 +77,6 @@ jobs:
           else
               echo "${{env.file_var}} exists: ${{!env.file_var}}"
               echo "CHECK_FILE_IS_OK=true" >> $GITHUB_ENV
-              mkdir file_var
-              cd file_var
-              unzip ../$file_var
-              cd ..
           fi
           done
           
