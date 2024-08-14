@@ -75,7 +75,7 @@ jobs:
               echo "CHECK_FILE_IS_OK=true" >> $GITHUB_ENV
               mkdir file_var
               cd file_var
-              unzip ${{env.file_var}}
+              unzip ../file_var
               cd ..
           fi
           done
