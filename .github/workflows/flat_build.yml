@@ -180,7 +180,7 @@ jobs:
           mkdir -p anykernel/kernels/
           cp out/arch/arm64/boot/Image anykernel/kernels/
           cd anykernel
-          ZIP_FILENAME=Kernel_MIUI_${env.DEVICE}_KernelSU_$(date +'%Y%m%d_%H%M%S')_anykernel3.zip
+          ZIP_FILENAME=Kernel_MIUI_${{env.DEVICE}}_KernelSU_$(date +'%Y%m%d_%H%M%S')_anykernel3.zip
           echo "ZIP_FILENAME=${ZIP_FILENAME}" >> $GITHUB_ENV
           zip -r9 $ZIP_FILENAME ./* -x .git .gitignore out/ ./*.zip
           mv $ZIP_FILENAME ../
