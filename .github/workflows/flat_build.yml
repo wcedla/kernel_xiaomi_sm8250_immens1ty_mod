@@ -1,4 +1,4 @@
-name: flat build kernel by proton clang
+name: Build kernel by proton clang
 on:
   watch:
     types: [ started ]
@@ -125,7 +125,7 @@ jobs:
           export KBUILD_BUILD_HOST=Github-Action
           export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
           
-          make $MAKE_ARGS ${env.DEVICE}_defconfig
+          make $MAKE_ARGS ${{env.DEVICE}}_defconfig
           
           scripts/config --file out/.config -e KSU
           
