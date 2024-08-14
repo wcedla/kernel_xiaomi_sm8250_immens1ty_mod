@@ -1,4 +1,4 @@
-name: Build kernel by proton clang
+name: flat build kernel by proton clang
 on:
   watch:
     types: [ started ]
@@ -163,7 +163,7 @@ jobs:
 
       - name: Check a kernel output files
         run: |
-          cd $GITHUB_WORKSPACE/kernel_workspace
+          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           if [ -f "out/arch/arm64/boot/Image" ]; then
               echo "The file [out/arch/arm64/boot/Image] exists. MIUI Build successfully."
               echo "CHECK_FILE_IS_OK=true" >> $GITHUB_ENV
