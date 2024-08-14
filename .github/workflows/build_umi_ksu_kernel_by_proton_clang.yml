@@ -18,8 +18,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Prepare Configuration
         run: |
-          echo "KERNEL_SOURCE=https://github.com/wcedla/kernel_xiaomi_sm8250_immens1ty_mod.git >> $GITHUB_ENV
-          echo "KERNEL_SOURCE_BRANCH=android14-stable-mod >> $GITHUB_ENV
+          echo "KERNEL_SOURCE=https://github.com/wcedla/kernel_xiaomi_sm8250_immens1ty_mod.git" >> $GITHUB_ENV
+          echo "KERNEL_SOURCE_BRANCH=android14-stable-mod" >> $GITHUB_ENV
 
       - name: Set swap to 10G
         uses: pierotofy/set-swap-space@master
