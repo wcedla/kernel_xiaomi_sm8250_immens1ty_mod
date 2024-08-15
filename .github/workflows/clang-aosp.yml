@@ -37,13 +37,13 @@ jobs:
       - name: Download Clang-aosp
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace
-          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 -b android14-release clang-aosp
+          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 -b android12-release clang-aosp
 
       - name: Download Google_gcc-4.9
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace
-          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-msm-redbull-4.19-android14-release gcc-64
-          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-msm-redbull-4.19-android14-release gcc-32
+          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android12-release gcc-64
+          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android12-release gcc-32
 
       - name: Download kernel source
         run: |
@@ -124,7 +124,7 @@ jobs:
           
           MAKE_ARGS="ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu-"
           
-          export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/clang-r487747c/bin:$GITHUB_WORKSPACE/kernel_workspace/gcc-64/bin:$GITHUB_WORKSPACE/kernel_workspace/gcc-32/bin:$PATH
+          export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/clang-r416183b/bin:$GITHUB_WORKSPACE/kernel_workspace/gcc-64/bin:$GITHUB_WORKSPACE/kernel_workspace/gcc-32/bin:$PATH
           export KBUILD_BUILD_HOST=Github-Action
           export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
           
