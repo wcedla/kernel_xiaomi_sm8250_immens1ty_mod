@@ -42,8 +42,8 @@ jobs:
       - name: Download Google_gcc-4.9
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace
-          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android12-release gcc-64
-          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android12-release gcc-32
+          wget -O binutils241.tar.xz https://github.com/tomxi1997/Electron-binutils-build-for-arm64-x86_64/releases/download/v5/electron-binutils-2.41.tar.xz
+          tar -C binutils/ -xf binutils241.tar.xz
 
       - name: Download kernel source
         run: |
@@ -124,7 +124,7 @@ jobs:
           
           MAKE_ARGS="ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu-"
           
-          export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/clang-r450784d/bin:$GITHUB_WORKSPACE/kernel_workspace/gcc-64/bin:$GITHUB_WORKSPACE/kernel_workspace/gcc-32/bin:$PATH
+          export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/clang-r450784d/bin:$GITHUB_WORKSPACE/kernel_workspace/binutils/bin:$PATH
           export KBUILD_BUILD_HOST=Github-Action
           export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
           
