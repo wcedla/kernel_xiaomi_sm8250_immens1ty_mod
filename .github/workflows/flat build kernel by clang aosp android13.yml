@@ -42,6 +42,7 @@ jobs:
       - name: Download Google_gcc-4.9
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace
+          mkdir binutils
           wget -O binutils241.tar.xz https://github.com/tomxi1997/Electron-binutils-build-for-arm64-x86_64/releases/download/v5/electron-binutils-2.41.tar.xz
           tar -C binutils/ -xf binutils241.tar.xz
 
