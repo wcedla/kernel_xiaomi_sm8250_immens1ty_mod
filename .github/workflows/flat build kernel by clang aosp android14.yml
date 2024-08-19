@@ -37,7 +37,7 @@ jobs:
       - name: Download Clang-aosp
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace
-          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 -b android14-release clang-aosp
+          git clone -q --depth=1 --single-branch https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 -b android12-release clang-aosp
 
       - name: Download Google_gcc-4.9
         run: |
