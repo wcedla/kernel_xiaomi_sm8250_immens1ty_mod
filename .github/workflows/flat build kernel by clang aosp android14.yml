@@ -123,7 +123,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           
-          MAKE_ARGS="ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- CLANG_TRIPLE=aarch64-linux-gnu-"
+          MAKE_ARGS="ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CLANG_TRIPLE=aarch64-linux-gnu-"
           
           export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/clang-r487747c/bin:$GITHUB_WORKSPACE/kernel_workspace/binutils/bin:$PATH
           export KBUILD_BUILD_HOST=Github-Action
