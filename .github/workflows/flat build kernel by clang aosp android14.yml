@@ -121,6 +121,8 @@ jobs:
 
       - name: Build kernel
         run: |
+          cd $GITHUB_WORKSPACE/kernel_workspace/binutils/bin
+          ls
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           
           MAKE_ARGS="ARCH=arm64 SUBARCH=arm64 O=out CC=clang CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CLANG_TRIPLE=aarch64-linux-gnu-"
